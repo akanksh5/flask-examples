@@ -1,4 +1,4 @@
-# This file contains an example for a PUT request.
+# This file contains an example for a PUT and a GET request.
 
 from flask import Flask,request,jsonify
 app = Flask(__name__)
