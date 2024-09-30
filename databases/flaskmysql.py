@@ -82,8 +82,8 @@ def get_users_fetchmany():
     users_list = [user.to_dict() for user in users]  # Convert each User object to a dictionary
     return jsonify(users_list)
 
-@app.route('/users/fetchone/<username>', methods=['GET'])
-def get_user_fetch_one(username):
+@app.route('/users/fetchone', methods=['GET'])
+def get_user_fetch_one():
     sql = text('SELECT id, username FROM user')
     row = db.session.execute(sql).fetchone()
     users_list = {"id": row[0], "username": row[1]}
