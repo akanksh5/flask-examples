@@ -4,12 +4,12 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # MongoDB connection setup
-client = MongoClient("mongodb://localhost:27017/myDatabase")
+client = MongoClient("mongodb://localhost:27017/")
 db = client.myDatabase  # Replace with your database name
-users_collection = db.users  # Replace with your collection name
+users_collection = db.exampleOneCollection # Replace with your collection name
 
 # Insert a new user into MongoDB
-@app.route('/add_user', methods=['POST'])
+@app.route('/user', methods=['POST'])
 def add_user():
     # Get data from the request
     user_data = request.json
