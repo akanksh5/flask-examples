@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Set up the MongoDB client
 client = MongoClient('mongodb://localhost:27017/')  # Adjust your MongoDB URI accordingly
 db = client['myDatabase']  # Replace with your database name
-collection = db['exampleThreeCollection']  # Replace with your collection name
+collection = db['exampleThreeCollection1']  # Replace with your collection name
 
 # Endpoint to get students with filters
 @app.route('/students', methods=['GET'])
@@ -16,11 +16,12 @@ def get_students():
     max_grade = request.args.get('max_grade', type=float)  # Maximum grade for filter
     sort_order = request.args.get('sort', default='asc', type=str)  # Sort order
 
-    query = {}
+    print(min_grade,"min grade")
+    query = {'grade':{}}
     if min_grade is not None:
-        query['grade'] = {'$gte': min_grade}  # Greater than min_grade
+        query['grade']['$gte'] = min_grade  # Greater than min_grade
     if max_grade is not None:
-        query['grade'] = {'$lte': max_grade}  # Less than max_grade
+        query['grade']['$lte']= max_grade  # Less than max_grade
 
     # Determine sort direction
     sort_direction = 1 if sort_order == 'asc' else -1
