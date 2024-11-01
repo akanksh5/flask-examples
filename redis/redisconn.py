@@ -2,6 +2,8 @@ import redis
 import asyncio
 from fastapi import FastAPI, HTTPException
 
+
+# Please note: This is meant for FastAPI and not Flask.
 app = FastAPI()
 redis_client = redis.Redis(host='localhost', port=6379, db=0)
 
